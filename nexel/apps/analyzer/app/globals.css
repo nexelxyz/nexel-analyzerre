@@ -1,3 +1,112 @@
 /* Analyzer-only overrides layer. The full Nexel design system is imported
-   from @nexel/ui/styles/globals.css in layout.jsx. Intentionally empty so the
-   analyzer is visually identical to the landing page. */
+   from @nexel/ui/styles/globals.css in layout.jsx. */
+
+/* ── Landing page — product grid ──────────────────────────────────────────── */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--line-strong);
+  margin-top: 60px;
+}
+
+.product-card {
+  padding: 56px 48px;
+  background: var(--bg-elev);
+  border-right: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s;
+}
+
+.product-card:last-child {
+  border-right: none;
+}
+
+.product-card:hover {
+  background: var(--bg-elev-2);
+}
+
+.product-card-num {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-card-num::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--fg-faint);
+}
+
+.product-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--fg);
+}
+
+.product-card h2 em {
+  font-style: italic;
+  color: var(--fg-dim);
+}
+
+.product-card-desc {
+  font-size: 14px;
+  color: var(--fg-dim);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 420px;
+}
+
+.product-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 48px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.product-card-features li {
+  font-size: 12px;
+  color: var(--fg-faint);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-card-features li::before {
+  content: '→';
+  color: var(--fg-ghost);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .product-card {
+    border-right: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding: 40px 24px;
+  }
+
+  .product-card:last-child {
+    border-bottom: none;
+  }
+}

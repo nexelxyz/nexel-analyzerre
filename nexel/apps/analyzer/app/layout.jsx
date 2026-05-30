@@ -7,7 +7,7 @@ import Footer from "@nexel/ui/components/Footer.jsx";
 import BackgroundLayer from "@nexel/ui/components/BackgroundLayer.jsx";
 
 const DESCRIPTION =
-  "Live on-chain wallet analysis on Base. Trust score, reputation, sybil probability, wallet age, balance, and activity — read directly from the chain.";
+  "Live on-chain analysis for wallets and smart contract agents on Base. Wallet trust score, agent scoring, verification status, sybil risk — read directly from the chain.";
 
 export const metadata = {
   title: "Analyzer · NEXEL · On-chain identity for agents on Base",
@@ -39,7 +39,8 @@ const FOOTER_COLUMNS = [
   {
     heading: "Product",
     items: [
-      { label: "Analyzer", href: "/analyzer" },
+      { label: "Wallet Analyzer", href: "/analyzer" },
+      { label: "Agent Analyzer", href: "/agent" },
       { label: "Nexel Home", href: "https://trynexel.xyz", external: true },
     ],
   },
@@ -64,15 +65,15 @@ export default function RootLayout({ children }) {
         <BackgroundLayer />
         <Nav
           variant="sub"
-          logoHref="/analyzer"
+          logoHref="/"
           subLabel="ANALYZER"
           back={{ label: "Nexel ↗", href: "https://trynexel.xyz" }}
         />
         {children}
         <Footer
-          logoHref="/analyzer"
+          logoHref="/"
           columns={FOOTER_COLUMNS}
-          tagline="Live on-chain analysis for autonomous agents on Base."
+          tagline="Live on-chain analysis for wallets and agents on Base."
         />
       </body>
     </html>

@@ -9,7 +9,14 @@ import { deriveAnalysis } from "../../lib/analyzer-logic.js";
 // they have simply moved from the browser into this route.
 export async function POST(request) {
   try {
-    const { address } = await request.json();
+    const { address: rawAddress } = await request.json();
+
+    // Normalize to lowercase before validation. ethers v6 treats any mixed-case
+    // input as a checksummed address and rejects it when the casing doesn't
+    // match the computed EIP-55 checksum. Lowercasing skips that check and
+    // accepts all valid hex addresses regardless of how the caller cased them.
+    const address =
+      typeof rawAddress === "string" ? rawAddress.trim().toLowerCase() : "";
 
     if (!ethers.isAddress(address)) {
       return NextResponse.json({ error: "Invalid wallet" }, { status: 400 });
